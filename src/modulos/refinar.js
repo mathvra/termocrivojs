@@ -1,12 +1,19 @@
 export default function refinar(canvasAdjust, fg, colorMarker){
     var ctx = canvasAdjust.getContext("2d");
     var isDrawing;
+    let sizeBrush
+    const brush = document.getElementById("brush")
+    const brushInfo = document.getElementById("brushInfo")
+    brush.addEventListener('change', (e)=>{
+        brushInfo.textContent=`${brush.value}px`
+    }, false)
+    sizeBrush = brush.value
     canvasAdjust.onmousedown = function (e) {
         if (fg.disabled === false) {
             let mousePos = getMousePosition(e);
             isDrawing = true;
             ctx.beginPath();
-            ctx.lineWidth = 20;
+            ctx.lineWidth = sizeBrush;
             ctx.lineJoin = ctx.lineCap = "round";
             ctx.strokeStyle = colorMarker;
             ctx.moveTo(mousePos.x, mousePos.y);

@@ -9,11 +9,39 @@ body, html, *{
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
+.coords{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.coords span{
+    border-radius: 20px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-
+.assinatura{
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 60px;
+}
+.buttonsCrop{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    /* padding-left: 100px; */
+    /* padding-right: 100px; */
+}
+.buttonsCrop button{
+    height: 30px;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 20px;
+}
 .buttons{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 5fr 5fr 2fr;
     gap: 5px;
     /* padding-left: 100px; */
     /* padding-right: 100px; */
@@ -24,12 +52,33 @@ body, html, *{
     width: 100%;
     border-radius: 20px;
 }
+.brush{
+    width: 100%;
+    margin: 10px auto;
+}
+.sizeBrush{
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    gap: 5px;
+}
+.sizeBrush span{
+    background-color: white;
+    padding: 2px;
+    text-align: center;
+    border-radius: 20px;
+    height: 20px;
+    margin: auto 0;
+}
 .btnValidate{
     height: 30px;
-    margin: 20px auto;
+    margin: 0 auto;
     width: 100%;
     border-radius: 20px;
     background: orange;
+}
+#limpar{
+    color: white;
+    background-color: gray;
 }
 .geral{
     padding: 20px;
@@ -42,13 +91,13 @@ body, html, *{
     padding-top: 20px;
 }
 #containerCrop{
-    
+    display: none;
     padding: 40px;
     margin-bottom: 50px;
 }
 #containerGrabcut{
     padding: 20px;
-    /* display: none; */
+    display: none;
 }
 #canvasAdjust {
     cursor: crosshair;
@@ -151,8 +200,16 @@ footer{
     width: 100%;
     height: 300px;
     background: rgb(161, 161, 161);
-    padding-top: 30px;
+    padding-top: 20px;
 
+}
+.entradaDoInput{
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    width: 100%;  
 }
 
 .containerInput{
@@ -162,7 +219,8 @@ footer{
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     padding: 30px;
     border-radius: 70px;
-    margin: auto;
+    margin: 0 auto;
+    margin-bottom: 30px;
     
 }
 .containerInput input{
@@ -178,13 +236,13 @@ footer{
 .inputoutput{
     width: 100%;
     display: grid;
-    grid-template-columns: 6fr 6fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
 }
 
 .imgEntrada{
     min-width: 100%;
-    
+    margin: 0 auto;
 }
 
 .inputoutput .imgShow{
@@ -210,7 +268,7 @@ footer{
     border-radius: 30px;
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto;
     gap: 20px;
 }
 .infos{

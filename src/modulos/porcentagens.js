@@ -1,7 +1,7 @@
 import Jimp from 'jimp'
 import cv from './opencv.js'
 
-export default function calcPorcentagens(images){
+export default function calcPorcentagens(images, src){
     let porcentagens = []
     let soma = 0
     let fundo = Jimp.rgbaToInt(0, 0, 0, 255)
@@ -14,26 +14,23 @@ export default function calcPorcentagens(images){
             data: Buffer.from(images[i].data)
             })
 
-        let total = jimpSrc.bitmap.width * jimpSrc.bitmap.height
+        let total = src.cols * src.rows
+        let totalCorte = jimpSrc.bitmap.width * jimpSrc.bitmap.height
+
+        let dif = total - totalCorte
 
         for (let j = 0; j < jimpSrc.bitmap.width; j++){
             for (let k = 0; k < jimpSrc.bitmap.height; k++){
                 if (jimpSrc.getPixelColor(j, k) == fundo){
                     preto++
-                    porcento = ((total - preto) / total) * 100
                 }
             }   
         }
+        porcento = ((total - (preto+dif)) / total) * 100
         soma = soma+porcento
         porcentagens.push(porcento)   
     }
-    console.log(soma);
-    let barra = document.getElementById('barra')
-    barra.textContent = 'Pronto!'
-    barra.style.color = 'black'
-    barra.style.background = 'lime'
-    setInterval(() => {
-        barra.style.display = 'none'
-    }, 5000)
+    
+    porcentagens.push(100 - soma)
     return porcentagens
 }

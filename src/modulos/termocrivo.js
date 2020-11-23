@@ -6,27 +6,32 @@ import cv from './opencv'
 import preenchePorcentagens from './preencherPorcentagens.js'
 import jimpCanvas from './jimpimg.js'
 import kmeans from './kmeans.js'
+import Jimp from 'jimp'
 import calcPorcentagens from './porcentagens.js'
 
-let ident = document.getElementById('ident')
-let identText = document.getElementById('identText')
-let data = document.getElementById('data')
-let dataText = document.getElementById('dataText')
-let imgElement = document.getElementById('imageSrc');
-let barra = document.getElementById('barra')
-
+const ident = document.getElementById('ident')
+const identText = document.getElementById('identText')
+const prof = document.getElementById('prof')
+const profText = document.getElementById('profText')
+const data = document.getElementById('data')
+const dataText = document.getElementById('dataText')
+const imgElement = document.getElementById('imageSrc');
+const barra = document.getElementById('barra')
+const infoCoords = document.getElementById('infoCoords')
 
 const canvasCut = document.getElementById("canvasCut")
 const canvasInput = document.getElementById("canvasInput")
 const canvasAdjust = document.getElementById("canvasAdjust")
 const container = document.getElementById("container")
 const containerCut = document.getElementById("containerCut")
-// const containerCrop = document.getElementById("containerCrop")
+const containerCrop = document.getElementById("containerCrop")
 const containerGrabcut = document.getElementById("containerGrabcut")
 const print = document.getElementById("print")
 
 const fg = document.getElementById("fg")
 const bg = document.getElementById("bg")
+const limpar = document.getElementById("limpar")
+
 const validate = document.getElementsByClassName("validate")
 const crop = document.getElementById("crop")
 
@@ -36,39 +41,31 @@ let inputElement = document.getElementById('fileInput');
 inputElement.addEventListener('change', (e) => {
     imgElement.src = URL.createObjectURL(e.target.files[0])
     barra.style.display = 'block'
-    // containerGrabcut.style.display = "none"
 }, false);
 
-print.style.display = "none"
-
 imgElement.onload = function () {
-
-    identText.innerHTML = 'Id: '
+    containerGrabcut.style.display = "block"
+    containerCrop.style.display = "block"
+    identText.innerHTML = '<b>Paciente: </b>'
     identText.innerHTML += ident.value
-    dataText.innerHTML = 'Data '
-    dataText.innerHTML += data.value
+    let dataAjustada = data.value.split('-')
+    let dia = dataAjustada[2]
+    let mes = dataAjustada[1]
+    let ano = dataAjustada[0]
+    dataText.innerHTML = '<b>Data: </b>'
+    dataText.innerHTML += `${dia}/${mes}/${ano}`
+    profText.innerHTML = '<b>Profissional: </b>'
+    profText.innerHTML += prof.value
     let src = cv.imread('imageSrc')
 
-    let res = kmeans(src)
-
-    cv.imshow("canvasResult", src)
     cv.imshow("canvasCut", src);
     cv.imshow("canvasInput", src);
-    cv.imshow('canvasOutput0', res[0]);
-    cv.imshow('canvasOutput1', res[1]);
-    //cv.imshow('canvasOutput2', res[2]);
-    //cv.imshow('canvasOutput3', res[3]);
-    //cv.imshow('canvasOutput4', res[4]);
-    //cv.imshow('canvasOutput5', res[5]);
-    //cv.imshow('canvasOutput6', res[6]);
-    //cv.imshow('canvasOutput7', res[7]);
-    cv.imshow('canvasOutput8', res[8]);
-
     fg.disabled = false
     bg.disabled = false
     crop.disabled = false
     validate[0].disabled = false
     validate[1].disabled = false
+    limpar.disabled = false
     adjustContainerAndLayer()
 
     refinar(canvasAdjust, fg, colorMarker)
@@ -79,14 +76,11 @@ imgElement.onload = function () {
         width: 479,
         height: 350
     }
+
     cortar(canvasCut, options)
+}
 
-    preenchePorcentagens(calcPorcentagens(res))
-
-    print.style.display = ""
-};
-
-crop.onclick = () => {
+crop.onclick = async () => {
     let cropper = cortar(canvasCut)
     let src = cv.imread('canvasInput')
     let srcCut = jimpCanvas(src, cropper[1])
@@ -94,24 +88,19 @@ crop.onclick = () => {
     cv.imshow("canvasResult", srcCut)
     cv.imshow('canvasOutput0', res[0]);
     cv.imshow('canvasOutput1', res[1]);
-    //cv.imshow('canvasOutput2', res[2]);
-    //cv.imshow('canvasOutput3', res[3]);
-    //cv.imshow('canvasOutput4', res[4]);
-    //cv.imshow('canvasOutput5', res[5]);
-    //cv.imshow('canvasOutput6', res[6]);
-    //cv.imshow('canvasOutput7', res[7]);
-    cv.imshow('canvasOutput8', res[8]);
+    cv.imshow('canvasOutput2', res[7]);
 
-    preenchePorcentagens(calcPorcentagens(res))
+    preenchePorcentagens(calcPorcentagens(res, src))
 
     cortar(canvasCut, cropper[1])
-    containerGrabcut.style.display = "none"
+    containerGrabcut.style.display = ""
+    print.style.display = "block"
+
 }
 
 validate[0].onclick = () => {
-    containerGrabcut.style.display = ""
     let cropper = cortar(canvasCut)
-
+    containerGrabcut.style.display = "block"
     let newmask = cv.imread("canvasAdjust", 0)
     let src = cv.imread("canvasInput")
     let grab = grabCut(src, newmask, cropper[1])
@@ -121,23 +110,16 @@ validate[0].onclick = () => {
 
     cv.imshow('canvasOutput0', res[0]);
     cv.imshow('canvasOutput1', res[1]);
-    //cv.imshow('canvasOutput2', res[2]);
-    //cv.imshow('canvasOutput3', res[3]);
-    //cv.imshow('canvasOutput4', res[4]);
-    //cv.imshow('canvasOutput5', res[5]);
-    //cv.imshow('canvasOutput6', res[6]);
-    //cv.imshow('canvasOutput7', res[7]);
-    cv.imshow('canvasOutput8', res[8]);
+    cv.imshow('canvasOutput2', res[7]);
 
-    preenchePorcentagens(calcPorcentagens(res))
+    preenchePorcentagens(calcPorcentagens(res, src))
 
     cortar(canvasCut, cropper[1])
 
-    print.style.display = ""
+    print.style.display = "block"
 }
 
 validate[1].onclick = () => {
-    containerGrabcut.style.display = ""
     let cropper = cortar(canvasCut)
 
     let newmask = cv.imread("canvasAdjust", 0)
@@ -149,27 +131,74 @@ validate[1].onclick = () => {
 
     cv.imshow('canvasOutput0', res[0]);
     cv.imshow('canvasOutput1', res[1]);
-    //cv.imshow('canvasOutput2', res[2]);
-    //cv.imshow('canvasOutput3', res[3]);
-    //cv.imshow('canvasOutput4', res[4]);
-    //cv.imshow('canvasOutput5', res[5]);
-    //cv.imshow('canvasOutput6', res[6]);
-    //cv.imshow('canvasOutput7', res[7]);
-    cv.imshow('canvasOutput8', res[8]);
+    cv.imshow('canvasOutput2', res[7]);
 
-    preenchePorcentagens(calcPorcentagens(res))
+    preenchePorcentagens(calcPorcentagens(res, src))
 
     cortar(canvasCut, cropper[1])
 
-    print.style.display = ""
+    print.style.display = "block"
 }
 
+limpar.onclick = () => {
+    let srcAdjust = cv.imread('canvasAdjust')
+    let jimpSrcAdjust = new Jimp({
+        width: srcAdjust.cols,
+        height: srcAdjust.rows,
+        data: Buffer.from(srcAdjust.data)
+        })
+
+    for (let i = 0; i < jimpSrcAdjust.bitmap.width; i++){
+        for (let j = 0; j < jimpSrcAdjust.bitmap.height; j++){
+            jimpSrcAdjust.setPixelColor(0, i, j)
+        }
+    }
+
+    let CVCanvasAdjust = cv.matFromImageData(jimpSrcAdjust.bitmap)
+    cv.imshow("canvasAdjust", CVCanvasAdjust)
+}
+
+
+ident.addEventListener('change', (e)=>{
+    e.preventDefault()
+    identText.innerHTML = '<b>Paciente: </b>'
+    identText.innerHTML += ident.value
+}, false)
+
+prof.addEventListener('change', (e)=>{
+    e.preventDefault()
+    profText.innerHTML = '<b>Paciente: </b>'
+    profText.innerHTML += prof.value
+}, false)
+
+data.addEventListener('change', (e)=>{
+    e.preventDefault()
+    let dataAjustada = data.value.split('-')
+    let dia = dataAjustada[2]
+    let mes = dataAjustada[1]
+    let ano = dataAjustada[0]
+    dataText.innerHTML = '<b>Data: </b>'
+    dataText.innerHTML += `${dia}/${mes}/${ano}`
+}, false)
+
+
 function adjustContainerAndLayer() {
+    
+
     const box = canvasInput.getBoundingClientRect();
+    containerCut.style.width = box.width + "px";
+    containerCut.style.height = box.height + "px";
     canvasAdjust.width = box.width;
     canvasAdjust.height = box.height;
     container.style.width = box.width + "px";
     container.style.height = box.height + "px";
-    containerCut.style.width = box.width + "px";
-    containerCut.style.height = box.height + "px";
+
+    let barra = document.getElementById('barra')
+    barra.textContent = 'Pronto!'
+    barra.style.color = 'black'
+    barra.style.background = 'lime'
+    setInterval(() => {
+        barra.style.display = 'none'
+    }, 5000)
+
 }

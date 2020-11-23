@@ -5,18 +5,33 @@
     .infos{
         color: black;
     }
+    header{
+        height: 50px !important;
+        padding: 5px !important;
+    }
     footer{
         display: none;
     }
     .inputoutput{
-        grid-template-columns: 6fr 6fr !important;
-        gap: 10px;
+        grid-template-columns: 1fr 1fr !important;
+        padding: 0px !important;
+        box-shadow: none !important;
     }
     #canvasResult{
         max-height: 450px;
     }
+    #print{
+        padding: 0px;
+    }
+    .assinatura{
+        display: block !important;
+    }
+    .entradaDoInput{
+        padding: 10px !important;
+    }
 }
 
 #print{
-    padding: 20px;
+    padding: 10px;
+    display: none;
 }

@@ -50,10 +50,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: __dirname + '/src/index.html'
-        }),
-        new HtmlWebpackPlugin({
-            filename: "imprimir.html",
-            template: __dirname + '/src/modulos/imprimir.html'
         })
     ],
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -32,7 +32,8 @@
 
 
             <div class="containerInput">
-                <input id="ident" type="text" placeholder="Identificador">
+                <input id="ident" type="text" placeholder="Paciente">
+                <input id="prof" type="text" placeholder="Profissional">
                 <input type="date" id="data">
                 <input type="file" id="fileInput" name="file" />
                 <input type="submit" value="Criar PDF" id="criarPDF">
@@ -42,14 +43,14 @@
         <div id="barra">
             Carregando...
         </div>
-        <div class="geral">
+        <!-- <div class="geral"> -->
             <div id="containerCrop">
                 <div class="containerCut" id="containerCut">
                     <canvas id="canvasCut"></canvas>
 
                 </div>
                 <div class="containerButtons">
-                    <div class="buttons">
+                    <div class="buttonsCrop">
 
                         <button class="validate" disabled>Auto-Segmentar</button>
                         <button id="crop" disabled>
@@ -74,39 +75,42 @@
                         <button id="bg" disabled>
                             Remover
                         </button>
-
+                        <button id="limpar" disabled>
+                            Limpar
+                        </button>
+                        
                     </div>
+                    
+                    <div class="sizeBrush">
+                        <input class="brush" type="range" id="brush" value="20" min="1" max="100">
+                        <span id="brushInfo">20px</span>
+                    </div>
+                    
                     <button class="validate btnValidate" disabled>Auto-Segmentar</button>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
     <div id="print">
         <div class="infos">
-            <h4 id="identText" class="ident"></h4>
+            <p id="identText" class="ident"></p>
             <p id="dataText" class="ident"></p>
         </div>
         <div class="resposta">
 
             <canvas id="canvasOutput0"></canvas>
-
             <canvas id="canvasOutput1"></canvas>
-            <!-- <canvas id="canvasOutput2"></canvas>
-            <canvas id="canvasOutput3"></canvas>
-            <canvas id="canvasOutput4"></canvas>
-            <canvas id="canvasOutput5"></canvas>
-            <canvas id="canvasOutput6"></canvas>
-            <canvas id="canvasOutput7"></canvas> -->
-            <canvas id="canvasOutput8"></canvas>
+            <canvas id="canvasOutput2"></canvas>
         </div>
         <div class="inputoutput">
 
             <div class="entradaDoInput">
-                <div class="imgEntrada">
                     <!-- <img src="./assets/img/addimg.png" class="imgShow" id="imageSrcShow" alt="Aguardando imagem..." /> -->
                     <canvas id="canvasResult">Resultado!</canvas>
                     <img id="imageSrc" alt="Aguardando imagem..." />
-                </div>
+                    <!-- <div class="coords">
+                        <span id="infoCoords"></span>
+                    </div> -->
 
             </div>
             <div id="porcentagens">
@@ -146,19 +150,29 @@
                         <p> Violeta(%): </p>
                     </div>
                 </div>
-                <div class="itemResultado magenta">
+                <!-- <div class="itemResultado magenta">
                     <div class="resTexto" id="txtmagenta">
                         <p> Magenta(%): </p>
                     </div>
-                </div>
+                </div> -->
                 <div class="itemResultado branco">
                     <div class="resTexto" id="txtbranco">
                         <p> Branco(%): </p>
                     </div>
                 </div>
+                <div class="itemResultado preto">
+                    <div class="resTexto" id="txtpreto">
+                        <p> Preto(%): </p>
+                    </div>
+                </div>
+                <div class="assinatura">
+                    <hr>
+                    <p id="profText"></p>
+                </div>
             </div>
 
         </div>
+        
         <!-- <div class="resposta">
 
             <canvas id="canvasOutput0"></canvas>

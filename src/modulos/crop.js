@@ -29,5 +29,7 @@ export default function cortar(image, data){
     })
 
     //return cropper
+
+
     return cropResults = [cropper, infos, canvas]
 }
