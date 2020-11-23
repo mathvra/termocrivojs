@@ -1,0 +1,88 @@
+
+
+
+#crop{
+    background: blue;
+    color: white;
+    
+}
+.validate{
+    background: orange;
+    color: white;
+    
+}
+#fg{
+    background: green;
+    color: white;
+    
+}
+#bg{
+    background: red;
+    color: white;
+    
+}
+
+.vermelho{
+    border-left: 40px solid red;
+
+}
+.laranja{
+    border-left: 40px solid orange
+}
+.amarelo{
+    border-left: 40px solid yellow;
+}
+.verde{
+    border-left: 40px solid lime;
+}
+.ciano{
+    border-left: 40px solid cyan;
+}
+.azul{
+    border-left: 40px solid blue;
+}
+.violeta{
+    border-left: 40px solid purple;
+}
+.magenta{
+    border-left: 40px solid magenta;
+}
+.branco{
+    border-left: 40px solid lightgray;
+}
+.preto{
+    border-left: 40px solid black;
+}
+
+
+
+#canvasOutput0{
+    border-left: 8px solid red;
+}
+#canvasOutput1{
+    border-left: 8px solid orange;
+}
+#canvasOutput2{
+    border-left: 8px solid yellow;
+}
+#canvasOutput3{
+    border-left: 8px solid lime;
+}
+#canvasOutput4{
+    border-left: 8px solid cyan;
+}
+#canvasOutput5{
+    border-left: 8px solid blue;
+}
+#canvasOutput6{
+    border-left: 8px solid purple;
+}
+#canvasOutput7{
+    border-left: 8px solid magenta;
+}
+#canvasOutput8{
+    border-left: 8px solid lightgray;
+}
+#canvasOutput9{
+    border-left: 8px solid black;
+}

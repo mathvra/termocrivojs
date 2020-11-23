@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termocrivo JS</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.css"
+        integrity="sha512-949FvIQOibfhLTgmNws4F3DVlYz3FmCRRhJznR22hx76SKkcpZiVV5Kwo0iwK9L6BFuY+6mpdqB2+vDIGVuyHg=="
+        crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.js"
+        integrity="sha512-oqBsjjSHWqkDx4UKoU+5IUZN2nW2qDp2GFSKw9+mcFm+ZywqfBKp79nfWmGPco2wzTWuE46XpjtCjZ9tFmI12g=="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="./assets/img/logo.png" alt="">
+        </div>
+
+    </header>
+    <div id="myProgress">
+        <div id="myBar">
+
+        </div>
+    </div>
+    <div class="esconder">
+        <div class="entrada">
+
+
+            <div class="containerInput">
+                <input id="ident" type="text" placeholder="Identificador">
+                <input type="date" id="data">
+                <input type="file" id="fileInput" name="file" />
+                <input type="submit" value="Criar PDF" id="criarPDF">
+            </div>
+
+        </div>
+        <div id="barra">
+            Carregando...
+        </div>
+        <div class="geral">
+            <div id="containerCrop">
+                <div class="containerCut" id="containerCut">
+                    <canvas id="canvasCut"></canvas>
+
+                </div>
+                <div class="containerButtons">
+                    <div class="buttons">
+
+                        <button class="validate" disabled>Auto-Segmentar</button>
+                        <button id="crop" disabled>
+                            Cortar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="containerGrabcut">
+                <div id="container">
+                    <canvas id="canvasInput"></canvas>
+                    <canvas id="canvasAdjust"></canvas>
+
+                </div>
+                <div class="containerButtons">
+                    <div class="buttons">
+                        <button id="fg" disabled>
+                            Incluir
+                        </button>
+                        <button id="bg" disabled>
+                            Remover
+                        </button>
+
+                    </div>
+                    <button class="validate btnValidate" disabled>Auto-Segmentar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="print">
+        <div class="infos">
+            <h4 id="identText" class="ident"></h4>
+            <p id="dataText" class="ident"></p>
+        </div>
+        <div class="resposta">
+
+            <canvas id="canvasOutput0"></canvas>
+
+            <canvas id="canvasOutput1"></canvas>
+            <!-- <canvas id="canvasOutput2"></canvas>
+            <canvas id="canvasOutput3"></canvas>
+            <canvas id="canvasOutput4"></canvas>
+            <canvas id="canvasOutput5"></canvas>
+            <canvas id="canvasOutput6"></canvas>
+            <canvas id="canvasOutput7"></canvas> -->
+            <canvas id="canvasOutput8"></canvas>
+        </div>
+        <div class="inputoutput">
+
+            <div class="entradaDoInput">
+                <div class="imgEntrada">
+                    <!-- <img src="./assets/img/addimg.png" class="imgShow" id="imageSrcShow" alt="Aguardando imagem..." /> -->
+                    <canvas id="canvasResult">Resultado!</canvas>
+                    <img id="imageSrc" alt="Aguardando imagem..." />
+                </div>
+
+            </div>
+            <div id="porcentagens">
+
+                <div class="itemResultado vermelho">
+                    <div class="resTexto" id="txtvermelho">
+                        <p> Vermelho(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado laranja">
+                    <div class="resTexto" id="txtlaranja">
+                        <p> Laranja(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado amarelo">
+                    <div class="resTexto" id="txtamarelo">
+                        <p> Amarelo(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado verde">
+                    <div class="resTexto" id="txtverde">
+                        <p> Verde(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado ciano">
+                    <div class="resTexto" id="txtciano">
+                        <p> Ciano(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado azul">
+                    <div class="resTexto" id="txtazul">
+                        <p> Azul(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado violeta">
+                    <div class="resTexto" id="txtvioleta">
+                        <p> Violeta(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado magenta">
+                    <div class="resTexto" id="txtmagenta">
+                        <p> Magenta(%): </p>
+                    </div>
+                </div>
+                <div class="itemResultado branco">
+                    <div class="resTexto" id="txtbranco">
+                        <p> Branco(%): </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="resposta">
+
+            <canvas id="canvasOutput0"></canvas>
+
+            <canvas id="canvasOutput1"></canvas>
+            <canvas id="canvasOutput2"></canvas>
+            <canvas id="canvasOutput3"></canvas>
+            <canvas id="canvasOutput4"></canvas>
+            <canvas id="canvasOutput5"></canvas>
+            <canvas id="canvasOutput6"></canvas>
+            <canvas id="canvasOutput7"></canvas>
+            <canvas id="canvasOutput8"></canvas>
+        </div> -->
+    </div>
+    <!-- <script async src="opencv.js" onloadstart="onOpenCvReady()"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.0.0/polyfills.umd.js"></script> -->
+    <!-- <script type="module" src="termocrivo.js"></script> -->
+
+    <footer>
+        <div class="logoFooter">
+            <img src="./assets/img/logo.png" alt="">
+        </div>
+    </footer>
+</body>
+
+</html>

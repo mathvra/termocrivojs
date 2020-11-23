@@ -1,0 +1,8 @@
+import './cores'
+import './crivo'
+//import './mostraCores'
+import './termocrivo'
+import './opencv.js'
+import './geraPdf.js'
+import './grabcut.js'
+import './refinar.js'

@@ -1,0 +1,22 @@
+@media print{
+    .esconder {
+        display: none;
+    }
+    .infos{
+        color: black;
+    }
+    footer{
+        display: none;
+    }
+    .inputoutput{
+        grid-template-columns: 6fr 6fr !important;
+        gap: 10px;
+    }
+    #canvasResult{
+        max-height: 450px;
+    }
+}
+
+#print{
+    padding: 20px;
+}

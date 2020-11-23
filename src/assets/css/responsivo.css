@@ -1,0 +1,11 @@
+@media (max-width: 1300px){
+    .resposta{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (max-width: 650px){
+    .inputoutput{
+        grid-template-columns: auto;
+    }
+}

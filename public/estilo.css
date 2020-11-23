@@ -1,0 +1,125 @@
+@import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap);
+
+
+
+#crop{
+    background: blue;
+    color: white;
+    
+}
+.validate{
+    background: orange;
+    color: white;
+    
+}
+#fg{
+    background: green;
+    color: white;
+    
+}
+#bg{
+    background: red;
+    color: white;
+    
+}
+
+.vermelho{
+    border-left: 40px solid red;
+
+}
+.laranja{
+    border-left: 40px solid orange
+}
+.amarelo{
+    border-left: 40px solid yellow;
+}
+.verde{
+    border-left: 40px solid lime;
+}
+.ciano{
+    border-left: 40px solid cyan;
+}
+.azul{
+    border-left: 40px solid blue;
+}
+.violeta{
+    border-left: 40px solid purple;
+}
+.magenta{
+    border-left: 40px solid magenta;
+}
+.branco{
+    border-left: 40px solid lightgray;
+}
+.preto{
+    border-left: 40px solid black;
+}
+
+
+
+#canvasOutput0{
+    border-left: 8px solid red;
+}
+#canvasOutput1{
+    border-left: 8px solid orange;
+}
+#canvasOutput2{
+    border-left: 8px solid yellow;
+}
+#canvasOutput3{
+    border-left: 8px solid lime;
+}
+#canvasOutput4{
+    border-left: 8px solid cyan;
+}
+#canvasOutput5{
+    border-left: 8px solid blue;
+}
+#canvasOutput6{
+    border-left: 8px solid purple;
+}
+#canvasOutput7{
+    border-left: 8px solid magenta;
+}
+#canvasOutput8{
+    border-left: 8px solid lightgray;
+}
+#canvasOutput9{
+    border-left: 8px solid black;
+}
+@media print{
+    .esconder {
+        display: none;
+    }
+    .infos{
+        color: black;
+    }
+    footer{
+        display: none;
+    }
+    .inputoutput{
+        grid-template-columns: 6fr 6fr !important;
+        gap: 10px;
+    }
+    #canvasResult{
+        max-height: 450px;
+    }
+}
+
+#print{
+    padding: 20px;
+}
+@media (max-width: 1300px){
+    .resposta{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (max-width: 650px){
+    .inputoutput{
+        grid-template-columns: auto;
+    }
+}
+
+body,html,*{padding:0;margin:0;box-sizing:border-box;font-family:'Ubuntu', sans-serif}.buttons{display:grid;grid-template-columns:auto auto;gap:5px}.buttons button{height:30px;margin:0 auto;width:100%;border-radius:20px}.btnValidate{height:30px;margin:20px auto;width:100%;border-radius:20px;background:orange}.geral{padding:20px}.containerButtons{margin:0 auto;min-width:350px;width:30%;padding-top:20px}#containerCrop{padding:40px;margin-bottom:50px}#containerGrabcut{padding:20px}#canvasAdjust{cursor:crosshair;z-index:10}.output{margin:0 auto}#canvasInput,#canvasAdjust{position:absolute}#canvasResult{margin:0 auto}#containerCut{background-color:#6b6b6b;margin:0 auto}#canvasInput{cursor:not-allowed}#container{background-color:#6b6b6b;height:200px;margin:10px auto;display:grid;grid-template-columns:1fr;grid-template-rows:1fr}body{background:#292929}.itemResultado{padding:5px;padding-left:5px;box-shadow:2px 2px 10px rgba(0,0,0,0.1);border-radius:80px;margin-bottom:10px;background-color:white}.resCor{width:20px;height:30px}.resTexto p{width:100%}header{height:80px;background:white;box-shadow:2px 3px 10px rgba(0,0,0,0.2);padding:20px;width:100%}footer{height:80px;background:white;box-shadow:2px 3px 10px rgba(0,0,0,0.2);padding:20px;margin-bottom:0}.logoFooter{width:100%}.logoFooter img{width:150px}.logo{margin:auto;width:fit-content}#barra{display:none;height:30px;padding:5px;padding-left:20px;width:100%;background:orange;color:white}#myBar{background:linear-gradient(to right, red, orange, yellow, lime, cyan, blue, purple, magenta);padding:5px;padding-left:30px;height:10px;max-width:100%}#imageSrc{display:none}.entrada{width:100%;height:300px;background:#a1a1a1;padding-top:30px}.containerInput{width:20%;min-width:350px;background:white;box-shadow:2px 2px 10px rgba(0,0,0,0.2);padding:30px;border-radius:70px;margin:auto}.containerInput input{border-radius:20px;padding:5px;margin-bottom:10px}#criarPDF{margin-left:auto}.inputoutput{width:100%;display:grid;grid-template-columns:6fr 6fr;gap:10px}.imgEntrada{min-width:100%}.inputoutput .imgShow{width:auto;min-width:100%;max-width:100%}.btnInput{background:white;box-shadow:2px 2px 10px rgba(0,0,0,0.2);padding:15px;border-radius:30px;min-width:300px;min-height:200px;margin:auto}.resposta{background:white;margin:auto;box-shadow:2px 2px 10px rgba(0,0,0,0.2);padding:15px;border-radius:30px;margin-bottom:10px;display:grid;grid-template-columns:auto auto auto auto auto;gap:20px}.infos{padding:15px;box-shadow:2px 2px 10px rgba(0,0,0,0.2);width:100%;background:white;border-radius:30px;margin-bottom:10px}.resposta canvas{max-width:100%}
+
