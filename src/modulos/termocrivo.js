@@ -167,7 +167,7 @@ ident.addEventListener('change', (e)=>{
 
 prof.addEventListener('change', (e)=>{
     e.preventDefault()
-    profText.innerHTML = '<b>Paciente: </b>'
+    profText.innerHTML = '<b>Profissional: </b>'
     profText.innerHTML += prof.value
 }, false)
 
